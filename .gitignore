@@ -1,0 +1,51 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pdb
+*.pkl
+*.so
+
+# Virtual environments
+venv/
+.env/
+.env.bak/
+.venv/
+
+# Byte-compiled / optimized / DLL files
+*.egg-info/
+*.egg
+.eggs/
+
+# --- FastAPI / Uvicorn ---
+# (Uvicorn reload creates temp files)
+*.log
+
+# --- SQLAlchemy / SQLite ---
+*.db
+*.sqlite
+*.sqlite3
+instance/
+*.db-journal
+
+# --- Pytest ---
+.pytest_cache/
+.coverage
+htmlcov/
+.cache/
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS files ---
+.DS_Store
+Thumbs.db
+
+# --- Build / Packaging ---
+build/
+dist/
+pip-wheel-metadata/

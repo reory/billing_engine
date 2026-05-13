@@ -1,0 +1,36 @@
+[project]
+name = "billing_engine"
+version = "0.1.0"
+description = "A backend-only usage-based billing engine built with FastAPI, SQLAlchemy, Redis, and RQ."
+authors = [
+    { name = "Roy Peters", email = "reory35@hotmail.com" }
+]
+license = { text = "MIT" }
+readme = "README.md"
+requires-python = ">=3.12"
+
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy>=2.0",
+    "pydantic>=2.0",
+    "redis",
+    "rq",
+    "python-dotenv",
+]
+
+[project.urls]
+Homepage = "https://github.com/reory"
+Repository = "https://github.com/reory/billing_engine"
+
+# Optional: tools configuration
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W"]

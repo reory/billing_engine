@@ -49,22 +49,6 @@ SQLite for simplicity (swap for Postgres easily)
 
 ---
 
-# 📦 Tech Stack
-
-- FastAPI — API framework
-
-- SQLAlchemy — ORM + models
-
-- SQLite — local development DB
-
-- RQ (Redis Queue) — background worker
-
-- Redis — job queue backend
-
-- Uvicorn — ASGI server
-
----
-
 # 📁 Project Structure
 
 ```
@@ -232,6 +216,22 @@ No DB writes.
 
 ## Invoice Generation
 Reads aggregated usage, calculates the final amount, and writes an invoice row.
+
+---
+
+# 📦 Tech Stack
+
+- FastAPI — API framework
+
+- SQLAlchemy — ORM + models
+
+- SQLite — local development DB
+
+- RQ (Redis Queue) — background worker
+
+- Redis — job queue backend
+
+- Uvicorn — ASGI server
 
 ---
 

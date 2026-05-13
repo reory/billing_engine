@@ -1,0 +1,14 @@
+# Create the RQ worker script which will wait for jobs.
+# run the script - rq worker (run in a separate terminal)
+
+import redis
+from rq import Worker, Queue, Connection
+
+listen = ["default"]
+
+redis_conn = redis.Redis()
+
+if __name__ == "__main__":
+    with Connection(redis_conn):
+        worker = Worker(list(map(Queue, listen)))
+        worker.work()
