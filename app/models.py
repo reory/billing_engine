@@ -1,7 +1,5 @@
 # SQLAlchemy models: UsageEvent, AggregatedUsage, Invoice.
 
-# app/models.py
-
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.sql import func
 from app.database import Base

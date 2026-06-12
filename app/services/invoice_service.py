@@ -12,6 +12,8 @@ class InvoiceService:
 
     @staticmethod
     def preview_invoice(db: Session, customer_id: str):
+        """Generate a preview of the invoice for the specified customer."""
+
         # Billing period: last 30 days (same as real invoice)
         period_end = datetime.utcnow()
         period_start = period_end - timedelta(days=30)
@@ -42,6 +44,7 @@ class InvoiceService:
 
     @staticmethod
     def generate_invoice(db: Session, customer_id: str) -> Invoice:
+        """Generate and return a invoice for the specified customer."""
 
         # Billing period (simple: last 30 days)
         period_end = datetime.utcnow()
@@ -77,4 +80,3 @@ class InvoiceService:
         db.refresh(invoice)
 
         return invoice
-

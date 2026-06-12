@@ -29,29 +29,29 @@ This project is ideal for demonstrating backend engineering skills such as:
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-Record usage events (e.g., API calls, storage, workflows)
+- Record usage events (e.g., API calls, storage, workflows)
 
-Daily usage aggregation (group + sum raw events)
+- Daily usage aggregation (group + sum raw events)
 
-Pricing engine (simple per‑unit pricing, easily extendable)
+- Pricing engine (simple per‑unit pricing, easily extendable)
 
-Invoice preview (estimate charges before billing period ends)
+- Invoice preview (estimate charges before billing period ends)
 
-Invoice generation (creates real invoice records)
+- Invoice generation (creates real invoice records)
 
-Clean service layer (routers → services → models)
+- Clean service layer (routers → services → models)
 
-Background‑safe aggregation (manual or scheduled)
+- Background‑safe aggregation (manual or scheduled)
 
-SQLite for simplicity (swap for Postgres easily)
+- SQLite for simplicity (swap for Postgres easily)
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
-```
+```python
 billing_engine/
 │
 ├── app/
@@ -86,8 +86,8 @@ billing_engine/
 
 ---
 
-# 🚀 Getting Started
-## Create & activate a virtual environment
+## 🚀 Getting Started
+### Create & activate a virtual environment
 ```bash
 python -m venv venv
 source venv/bin/activate   # macOS/Linux
@@ -97,7 +97,7 @@ venv\Scripts\activate      # Windows
 ```bash
 pip install -r requirements.txt
 ```
-## Start Redis (required for the worker)
+### Start Redis (required for the worker)
 On Windows (WSL recommended):
 
 ```bash
@@ -114,13 +114,13 @@ Swagger UI:
 
 http://127.0.0.1:8000/docs
 ```
-## Start the background worker
+### Start the background worker
 In a new terminal:
 
 ```bash
 rq worker
 ```
-## Start the scheduler (optional)
+### Start the scheduler (optional)
 In another terminal:
 
 ```bash
@@ -130,7 +130,7 @@ python scheduler.py
 
 ---
 
-# 🧪 How to Use the API (Step‑by‑Step) Swagger UI
+## 🧪 How to Use the API (Step‑by‑Step) Swagger UI
 - Record usage
 - POST /usage
 
@@ -141,24 +141,24 @@ python scheduler.py
   "metric": "api_calls",
   "units": 500
 }
-## Run aggregation manually
+### Run aggregation manually
 POST /aggregate/run
 
 - This groups + sums raw usage into daily totals.
 
-## Preview an invoice
+### Preview an invoice
 GET /invoice/preview/{customer_id}
 
 - Returns estimated charges for the current billing period.
 
-## Generate a real invoice
+### Generate a real invoice
 POST /invoice/{customer_id}
 
 - Creates an invoice record in the database.
 
 ---
 
-# 🧠 How It Works (Conceptual Overview)
+## 🧠 How It Works (Conceptual Overview)
 Usage Ingestion
 Raw events are stored exactly as they happen:
 
@@ -172,20 +172,20 @@ Raw events are stored exactly as they happen:
 
 - This keeps ingestion fast and append‑only.
 
-## Aggregation
-A background job periodically:
+### Aggregation
+- A background job periodically:
 
-fetches raw events
+- fetches raw events
 
-groups them by metric + customer
+- groups them by metric + customer
 
-sums units
+- sums units
 
-writes aggregated rows
+- writes aggregated rows
 
 This reduces billing load and keeps invoices fast.
 
-## Pricing Engine
+### Pricing Engine
 A simple per‑unit pricing dictionary:
 
 ```
@@ -197,29 +197,29 @@ PRICING = {
 ```
 You can easily extend this to:
 
-tiered pricing
+- tiered pricing
 
-free allowances
+- free allowances
 
-per‑customer overrides
+- per‑customer overrides
 
-## Invoice Preview
+### Invoice Preview
 Reads aggregated usage so far and returns:
 
-usage totals
+- usage totals
 
-estimated amount
+- estimated amount
 
-billing window
+- billing window
 
-No DB writes.
+- No DB writes.
 
-## Invoice Generation
+### Invoice Generation
 Reads aggregated usage, calculates the final amount, and writes an invoice row.
 
 ---
 
-# 📦 Tech Stack
+## 📦 Tech Stack
 
 - FastAPI — API framework
 

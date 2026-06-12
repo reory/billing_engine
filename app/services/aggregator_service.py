@@ -4,11 +4,13 @@ from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from app.models import UsageEvent, AggregatedUsage
 
+
 class AggregatorService:
     """Aggregates raw usage events into daily usage totals."""
 
     @staticmethod
     def run_daily_aggregation(db: Session):
+        """Perform daily data aggregation using the provided DB session."""
 
         # Define the aggregation window (24 hrs)
         period_end = datetime.utcnow()
@@ -52,4 +54,5 @@ class AggregatorService:
     @staticmethod
     def run_aggregation(db: Session):
         """Public wrapper for daily aggregation."""
+
         return AggregatorService.run_daily_aggregation(db)
